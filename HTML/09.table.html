@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        th, td {padding: 5px;}
+    </style>
+</head>
+<body style="margin: 40px;">
+    <table border="1" style="width: 65%; text-align: center;">
+        <!-- <th>    <thead> 테이블 헤드, 생략가능 -->
+            <tr>
+                <th style="width: 30%;">회사명</th>
+                <th style="width: 15%;">담당자</th>
+                <th style="width: 10%;">국가</th>
+            </tr>
+        <!-- </th> -->
+        <!-- <td>    <tbody> 테이블 바디, 생략가능 -->
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+            <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td colspan="2">I don't know</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Lethal Company</td>
+                <td>Eve</td>
+                <td>Bow</td>
+            </tr>
+            <tr>
+                <td>Luois</td>
+                <td>Titan</td>
+            </tr>
+        <!-- </td> -->
+    </table>
+</body>
+</html>
