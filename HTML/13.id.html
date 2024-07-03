@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID</title>
+    <style>
+        #myHeader {
+            background-color: aquamarine;
+            color: black;
+            /* margin: 5px; */
+            padding: 40px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function changeText() {
+            document.getElementById('myHeader').innerHTML = 'My Second Header.'
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1 id="myHeader">My First Header.</h1>
+    <!-- <h2 id="myHeader">My Second Header.</h2> -->
+     <a href="#C4">Jump to Chapter 4</a>     <!-- 현재 웹 페이지 안에서 특정 구간으로 이동(id 활용) -->
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h2 id="C4">Hello, I'm Chapter 4</h2>
+    <button onclick="changeText()">change</button>  <!-- 버튼 클릭 시 changeText() Javascript 실행 -->
+    <br>
+    <a href="#myHeader">Let's go Header</a>
+</body>
+</html>
