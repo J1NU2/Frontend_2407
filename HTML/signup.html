@@ -5,6 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <style>
+        .container {
+            width: 50%;
+            height: auto;
+            margin: auto;
+            margin-top: 30px;
+        }
+        .h2, .label {
+            text-align: center;
+        }
+        td, input {
+            padding: 5px;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
     <script>
         function check_pw() {
             var pwd = document.getElementById('pwd').value;
@@ -29,31 +46,31 @@
 </head>
 
 <body style="margin: 40px;">
-    <div>
-        <h2>회원 가입</h2><br>
+    <div class="container">
+        <h2 class="h2">회원 가입</h2><br>
         <form action="#" method="get">
             <table>
                 <tr>    <!-- 사용자 ID (필수 입력) -->
-                    <td><label for="uid">사용자 ID (*)</label></td>
+                    <td class="label"><label for="uid">사용자 ID (*)</label></td>
                     <td><input type="text" name="uid" id="uid" placeholder="ID" required autofocus></td>
                 </tr>
                 <tr>    <!-- 패스워드 (필수 입력) -->
-                    <td><label for="pwd">패스워드 (*)</label></td>
+                    <td class="label"><label for="pwd">패스워드 (*)</label></td>
                     <td><input type="password" name="pwd" id="pwd" onchange="check_pw()" placeholder="Password" required></td>
                 </tr>
                 <tr>    <!-- 패스워드 확인 (필수 입력) -->
-                    <td><label for="cpwd">패스워드 확인 (*)</label></td>
+                    <td class="label"><label for="cpwd">패스워드 확인 (*)</label></td>
                     <td><input type="password" name="cpwd" id="cpwd" onchange="check_pw()" placeholder="Confirm Password" required>
                         <span id="check"></span>
                     </td>
                 </tr>
                 <tr>    <!-- 이름 (필수 입력) -->
-                    <td><label for="uname">이름 (*)</label></td>
+                    <td class="label"><label for="uname">이름 (*)</label></td>
                     <td><input type="text" name="uname" id="uname" placeholder="Name" required></td>
                 </tr>
                 <tr>    <!-- 성별 (필수 선택) -->
-                    <td><label for="gender">성별 (*)</label></td>
-                    <td colspan="4">
+                    <td class="label"><label for="gender">성별 (*)</label></td>
+                    <td class="label" colspan="4">
                         <label for="male">남자</label>
                         <input type="radio" name="gender" id="male" value="male" style="margin-right: 30px;">
                         <label for="female">여자</label>
@@ -61,19 +78,19 @@
                     </td>
                 </tr>
                 <tr>    <!-- 이메일 (필수 입력) -->
-                    <td><label for="email">이메일 (*)</label></td>
+                    <td class="label"><label for="email">이메일 (*)</label></td>
                     <td><input type="email" name="email" id="email" placeholder="E-mail" required></td>
                 </tr>
                 <tr>    <!-- 전화 번호 -->
-                    <td><label for="phone">전화번호</label></td>
+                    <td class="label"><label for="phone">전화번호</label></td>
                     <td><input type="tel" name="phone" id="phone" placeholder="010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"></td>
                 </tr>
                 <tr>    <!-- 자기 소개 -->
-                    <td><label for="intro">자기소개</label></td>
+                    <td class="label"><label for="intro">자기소개</label></td>
                     <td><textarea name="intro" id="intro" rows="4" cols="22" placeholder="Introduction"></textarea></td>
                 </tr>
                 <tr>    <!-- 제출, 취소 버튼 -->
-                    <td colspan="2">
+                    <td class="label" colspan="2">
                         <input type="submit" value="제출">
                         <input type="reset" value="취소">
                     </td>
