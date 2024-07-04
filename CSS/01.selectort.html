@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selector</title>
+    <style>
+        * {         /* All, 모든 경우에 적용 */
+            font-family: d2coding;
+        }
+        p {         /* tag 이름 */
+            text-align: center;
+            color: rebeccapurple;
+        }
+        #para1 {    /* id 이름 */
+            text-align: center;
+            color: rebeccapurple;
+        }
+        .center {   /* class 이름 */
+            text-align: center;
+            color: rebeccapurple;
+        }
+        h2, h3 {    /* 그룹화 */
+            text-align: center;
+            color: blue;
+        }
+        div > p {   /* 자식 */
+            text-align: center;
+            color: red;
+        }
+        section p {  /* 자손 */
+            text-align: center;
+            color: orange;
+        }
+    </style>
+</head>
+<body style="margin: 40px;">
+    <h1 id="para1">rebeccapurple and center-aligned heading</h1>        <!-- id로 CSS 디자인하기 -->
+    <p>rebeccapurple and center-aligned heading</p>                     <!-- tag로 CSS 디자인하기 -->
+    <p class="center">rebeccapurple and center-aligned heading</p><br>  <!-- class로 CSS 디자인하기 -->
+    <h2>h2, The CSS Grouping Selector</h2>
+    <h3>h3, The CSS Grouping Selector</h3><br>
+    <div>
+        <p>red and center-aligned heading</p>
+        <section>
+            <p>orange and center-aligned heading</p>
+        </section>
+    </div>
+</body>
+</html>
