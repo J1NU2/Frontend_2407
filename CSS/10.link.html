@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link</title>
+    <style>
+        /* 일반 상태, 방문하지 않은 링크 */
+        a:link {color: red;}
+        /* 사용자가 방문한 링크 */
+        a:visited {color: green;}
+        /* 마우스를 올리면 표시되는 링크 */
+        a:hover {color: hotpink;}
+        /* 클릭하는 순간 표시되는 링크 */
+        a:active {color: blue;}
+        /* 링크의 밑줄을 숨기고 싶을 때 */
+        a {text-decoration: none;}
+        div > a:link, div > a:visited {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        div > a:hover, div > a:active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body style="margin: 40px;">
+    <h2>Link style</h2>
+    <a href="#" style="font-size: 30px;">Link.</a>
+    <h2>Link button</h2>
+    <div>
+        <a href="#" target="_blank">Link Button</a>
+    </div><hr>
+    <!-- 다양한 커서 유형 -->
+    <div style="font-size: 22px;">
+        <span style="cursor: auto">auto</span><br>
+        <span style="cursor: crosshair">crosshair</span><br>
+        <span style="cursor: default">default</span><br>
+        <span style="cursor: e-resize">e-resize</span><br>
+        <span style="cursor: help">help</span><br>
+        <span style="cursor: move">move</span><br>
+        <span style="cursor: n-resize">n-resize</span><br>
+        <span style="cursor: ne-resize">ne-resize</span><br>
+        <span style="cursor: nw-resize">nw-resize</span><br>
+        <span style="cursor: pointer">pointer</span><br>
+        <span style="cursor: progress">progress</span><br>
+        <span style="cursor: s-resize">s-resize</span><br>
+        <span style="cursor: se-resize">se-resize</span><br>
+        <span style="cursor: sw-resize">sw-resize</span><br>
+        <span style="cursor: text">text</span><br>
+        <span style="cursor: w-resize">w-resize</span><br>
+        <span style="cursor: wait">wait</span>
+    </div>
+</body>
+</html>
