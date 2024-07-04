@@ -5,42 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <script>
+        function check_pw() {
+            var pwd = document.getElementById('pwd').value;
+            var cpwd = document.getElementById('cpwd').value;
+
+            if(pwd.length < 6) {
+                window.alert('비밀번호는 6글자 이상 입력해야합니다.')
+            }
+
+            if(document.getElementById('pwd').value != '' && document.getElementById('cpwd').value != '') {
+                if(document.getElementById('pwd').value == document.getElementById('cpwd').value) {
+                    document.getElementById('check').innerHTML = '비밀번호가 일치합니다.'
+                    document.getElementById('check').style.color = 'blue';
+                }
+                else {
+                    document.getElementById('check').innerHTML = '비밀번호가 일치하지 않습니다.'
+                    document.getElementById('check').style.color = 'red';
+                }
+            }
+        }
+    </script>
 </head>
 
 <body style="margin: 40px;">
-    <form action="#" method="get">
+    <div>
         <h2>회원 가입</h2><br>
-        <!-- 사용자 ID (필수 입력) -->
-        <label for="uid">사용자 ID (*)</label>
-        <input type="text" name="uid" id="uid" placeholder="ID" required autofocus><br><br>
-        <!-- 패스워드 (필수 입력) -->
-        <label for="pwd">패스워드 (*)</label>
-        <input type="password" name="pwd" id="pwd" placeholder="Password" required><br><br>
-        <!-- 패스워드 확인 (필수 입력) -->
-        <label for="cpwd">패스워드 확인 (*)</label>
-        <input type="password" name="cpwd" id="cpwd" placeholder="Confirm Password" required><br><br>
-        <!-- 이름 (필수 입력) -->
-        <label for="uname">이름 (*)</label>
-        <input type="text" name="uname" id="uname" placeholder="Name" required><br><br>
-        <!-- 성별 (필수 선택) -->
-        <label for="gender">성별 (*)</label>
-        <label for="man">남자</label>
-        <input type="radio" name="gender" id="man">
-        <label for="woman">여자</label>
-        <input type="radio" name="gender" id="woman"><br><br>
-        <!-- 이메일 (필수 입력) -->
-        <label for="email">이메일 (*)</label>
-        <input type="email" name="email" id="email" placeholder="E-mail" required><br><br>
-        <!-- 전화 번호 -->
-        <label for="phone">전화번호</label>
-        <input type="tel" name="phone" id="phone" placeholder="010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br><br>
-        <!-- 자기 소개 -->
-        <label for="intro">자기소개</label>
-        <textarea name="intro" id="intro" rows="4" cols="30" placeholder="Introduction"></textarea><br><br>
-        <!-- 제출, 취소 버튼 -->
-        <input type="submit" value="제출">
-        <input type="reset" value="취소">
-    </form>
+        <form action="#" method="get">
+            <table>
+                <tr>    <!-- 사용자 ID (필수 입력) -->
+                    <td><label for="uid">사용자 ID (*)</label></td>
+                    <td><input type="text" name="uid" id="uid" placeholder="ID" required autofocus></td>
+                </tr>
+                <tr>    <!-- 패스워드 (필수 입력) -->
+                    <td><label for="pwd">패스워드 (*)</label></td>
+                    <td><input type="password" name="pwd" id="pwd" onchange="check_pw()" placeholder="Password" required></td>
+                </tr>
+                <tr>    <!-- 패스워드 확인 (필수 입력) -->
+                    <td><label for="cpwd">패스워드 확인 (*)</label></td>
+                    <td><input type="password" name="cpwd" id="cpwd" onchange="check_pw()" placeholder="Confirm Password" required>
+                        <span id="check"></span>
+                    </td>
+                </tr>
+                <tr>    <!-- 이름 (필수 입력) -->
+                    <td><label for="uname">이름 (*)</label></td>
+                    <td><input type="text" name="uname" id="uname" placeholder="Name" required></td>
+                </tr>
+                <tr>    <!-- 성별 (필수 선택) -->
+                    <td><label for="gender">성별 (*)</label></td>
+                    <td colspan="4">
+                        <label for="male">남자</label>
+                        <input type="radio" name="gender" id="male" value="male" style="margin-right: 30px;">
+                        <label for="female">여자</label>
+                        <input type="radio" name="gender" id="female" value="female">
+                    </td>
+                </tr>
+                <tr>    <!-- 이메일 (필수 입력) -->
+                    <td><label for="email">이메일 (*)</label></td>
+                    <td><input type="email" name="email" id="email" placeholder="E-mail" required></td>
+                </tr>
+                <tr>    <!-- 전화 번호 -->
+                    <td><label for="phone">전화번호</label></td>
+                    <td><input type="tel" name="phone" id="phone" placeholder="010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"></td>
+                </tr>
+                <tr>    <!-- 자기 소개 -->
+                    <td><label for="intro">자기소개</label></td>
+                    <td><textarea name="intro" id="intro" rows="4" cols="22" placeholder="Introduction"></textarea></td>
+                </tr>
+                <tr>    <!-- 제출, 취소 버튼 -->
+                    <td colspan="2">
+                        <input type="submit" value="제출">
+                        <input type="reset" value="취소">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 
 </html>
