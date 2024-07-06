@@ -115,14 +115,30 @@ body h2, body h3 {
 .place_have > div > img, .place_want > div > img {
     width: 20vw;
     height: 20vw;
+    border-radius: 10px;
 }
 .place_have > div > span, .place_want > div > span {
     font-size: 22px;
 }
 
 .favourite_food {
+    display: block;
+    text-align: center;
     border: 2px solid black;
     border-radius: 15px;
+}
+.favourite_food > div {
+    display: inline-block;
+    margin: auto 10px;
+    padding-bottom: 25px;
+}
+.favourite_food > div > img {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 10px;
+}
+.favourite_food > div > span {
+    font-size: 20px;
 }
 
 .favourite_list {
