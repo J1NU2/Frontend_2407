@@ -80,7 +80,7 @@ body h2, body h3 {
 }
 .city_list > li > a {
     display: block;
-    margin: 10px 5px;
+    margin: 0 5px 10px 5px;
     text-decoration: none;
 }
 .city_list > li > a:link {
