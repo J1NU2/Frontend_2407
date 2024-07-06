@@ -20,15 +20,27 @@ body h2, body h3 {
     border-radius: 15px;
 }
 .basic_img {
+    text-align: center;
+}
+.basic_img img {
     width: 150px;
     height: 150px;
-    border-radius: 30%;
-    overflow: hidden;
+    border-radius: 50%;
 }
-.basic_img > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.basic_img span {
+    font-size: 15px;
+}
+.basic_img a {
+    text-decoration: none;
+}
+.basic_img > a:link, .basic_img > a:visited {
+    color: black;
+}
+.basic_img > a:hover {
+    color: darkgray;
+}
+.basic_img > a:active {
+    color: gray;
 }
 .basic_info {
     padding: 40px;
@@ -50,7 +62,7 @@ body h2, body h3 {
     color: darkgray;
 }
 .basic_info > li > a:active {
-    color: blue;
+    color: gray;
 }
 
 .city {
