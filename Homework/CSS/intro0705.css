@@ -182,8 +182,8 @@ body h2, body h3 {
     margin: auto 10px 20px 10px;
 }
 .animal img {
-    width: 8vw;
-    height: 8vw;
+    width: 6vw;
+    height: 6vw;
     border-radius: 10px;
 }
 .color > div {
@@ -191,7 +191,7 @@ body h2, body h3 {
     margin: auto 10px 25px 10px;
 }
 .color img {
-    width: 8vw;
-    height: 8vw;
+    width: 6vw;
+    height: 6vw;
     border-radius: 10px;
 }
