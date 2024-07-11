@@ -55,3 +55,8 @@ span {
     width: 7vw;
     height: 7vw;
 }
+
+.modal-body img {
+    width: 15vw;
+    height: 15vw;
+}

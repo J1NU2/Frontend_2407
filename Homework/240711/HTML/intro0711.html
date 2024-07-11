@@ -92,7 +92,7 @@
                 <table class="table table-borderless mt-2" id="place">
                     <h2 class="mt-5"><i class="fa-solid fa-map-location-dot me-2"></i>장소</h2><hr>
                     <tr class="place">
-                        <td>
+                        <td data-bs-toggle="modal" data-bs-target="#anmeondo">
                             <img src="../img/anmeondo_forest.jpg" class="d-block mx-auto rounded-4" alt="안면도 자연휴양림">
                             <span class="d-flex justify-content-center my-2">안면도 자연휴양림</span>
                         </td>
@@ -184,6 +184,24 @@
                         </td>
                     </tr>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="anmeondo">
+        <div class="modal-dialog" style="width: 60vw; height: 60px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">안면도 자연휴양림</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body d-flex">
+                    <img src="../img/anmeondo_forest.jpg" class="rounded-4" alt="안면도 자연휴양림">
+                    <span class="ms-2">본문내용</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
             </div>
         </div>
     </div>
