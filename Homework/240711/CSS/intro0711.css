@@ -1,0 +1,57 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+span {
+    font-size: 18px;
+}
+
+.card > img {
+    width: 16vw;
+    height: 16vw;
+}
+
+.information a {
+    color: black;
+    text-decoration: none;
+}
+.information a:hover, .information a:active {
+    color: darkgray;
+}
+
+.area td img {
+    width: 15vw;
+    height: 15vw;
+}
+.area td a {
+    color: black;
+    text-decoration: none;
+}
+.area a:hover, .area a:active {
+    color: darkgray;
+}
+
+.place td img {
+    width: 22vw;
+    height: 22vw;
+}
+
+.food td img {
+    width: 12vw;
+    height: 12vw;
+}
+
+.hobby td img {
+    width: 17vw;
+    height: 17vw;
+}
+
+.animal td img {
+    width: 22vw;
+    height: 22vw;
+}
+
+.color td img {
+    width: 7vw;
+    height: 7vw;
+}
