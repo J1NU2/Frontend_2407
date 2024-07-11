@@ -47,8 +47,8 @@ span {
 }
 
 .animal td img {
-    width: 22vw;
-    height: 22vw;
+    width: 25vw;
+    height: 25vw;
 }
 
 .color td img {
@@ -59,4 +59,10 @@ span {
 .modal-body img {
     width: 15vw;
     height: 15vw;
+}
+.modal-body span {
+    font-size: 16px;
+}
+.modal-body .address {
+    font-size: 24px;
 }
