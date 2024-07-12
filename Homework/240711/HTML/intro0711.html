@@ -63,175 +63,187 @@
                 </div>
             </div>
             <div class="col-8">
-                <table class="table table-borderless mt-2" id="area">
-                    <h2><i class="fa-solid fa-earth-americas me-2"></i>지역</h2><hr>
-                    <tr class="area">
-                        <td>
-                            <span class="d-flex justify-content-center mb-2">태어난 곳</span>
-                            <a href="https://url.kr/P6PacP" target="_blank">
-                                <img src="../img/cheonan_logo.svg" class="d-block mx-auto" alt="천안시">
-                                <span class="d-flex justify-content-center mt-2">충청남도 천안시</span>
-                            </a>
-                        </td>
-                        <td>
-                            <span class="d-flex justify-content-center mb-2">살던 곳</span>
-                            <a href="https://url.kr/GoYTrE" target="_blank">
-                                <img src="../img/asan_logo.svg" class="d-block mx-auto" alt="아산시">
-                                <span class="d-flex justify-content-center mt-2">충청남도 아산시</span>
-                            </a>
-                        </td>
-                        <td>
-                            <span class="d-flex justify-content-center mb-2">현재 사는 곳</span>
-                            <a href="https://url.kr/a9ixSY" target="_blank">
-                                <img src="../img/suwon_logo.svg" class="d-block mx-auto" alt="수원시">
-                                <span class="d-flex justify-content-center mt-2">경기도 수원시</span>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <table class="table table-borderless mt-2" id="place">
-                    <h2 class="mt-5"><i class="fa-solid fa-map-location-dot me-2"></i>장소</h2><hr>
-                    <tr class="place">
-                        <td data-bs-toggle="modal" data-bs-target="#anmeondo">
-                            <img src="../img/anmeondo_forest.jpg" class="d-block mx-auto rounded-4" alt="안면도 자연휴양림">
-                            <span class="d-flex justify-content-center my-2">안면도 자연휴양림</span>
-                        </td>
-                        <td data-bs-toggle="modal" data-bs-target="#kumamoto">
-                            <img src="../img/kumamoto.jpg" class="d-block mx-auto rounded-4" alt="일본 구마모토">
-                            <span class="d-flex justify-content-center my-2">일본 구마모토</span>
-                        </td>
-                    </tr>
-                    <tr class="place">
-                        <td data-bs-toggle="modal" data-bs-target="#japan">
-                            <img src="../img/japan.jpg" class="d-block mx-auto rounded-4" alt="일본">
-                            <span class="d-flex justify-content-center mt-2">일본 여행</span>
-                        </td>
-                        <td data-bs-toggle="modal" data-bs-target="#jeju">
-                            <img src="../img/jeju.jpg" class="d-block mx-auto rounded-4" alt="제주도">
-                            <span class="d-flex justify-content-center mt-2">제주도 여행</span>
-                        </td>
-                    </tr>
-                </table>
-                <table class="table table-borderless mt-2" id="food">
-                    <h2 class="mt-5"><i class="fa-solid fa-utensils me-2"></i>음식</h2><hr>
-                    <tr class="food">
-                        <td>
-                            <img src="../img/meat.jpg" class="d-block mx-auto rounded-4" alt="육류">
-                            <span class="d-flex justify-content-center mt-2">육류</span>
-                        </td>
-                        <td>
-                            <img src="../img/seafood.jpg" class="d-block mx-auto rounded-4" alt="해산물">
-                            <span class="d-flex justify-content-center mt-2">해산물</span>
-                        </td>
-                        <td>
-                            <img src="../img/albab.jpg" class="d-block mx-auto rounded-4" alt="알밥">
-                            <span class="d-flex justify-content-center mt-2">알밥</span>
-                        </td>
-                        <td>
-                            <img src="../img/soba.jpg" class="d-block mx-auto rounded-4" alt="메밀소바">
-                            <span class="d-flex justify-content-center mt-2">메밀소바</span>
-                        </td>
-                    </tr>
-                </table>
-                <table class="table table-borderless mt-2" id="hobby">
-                    <h2 class="mt-5"><i class="fa-solid fa-palette me-2"></i>취미</h2><hr>
-                    <tr class="hobby">
-                        <td data-bs-toggle="modal" data-bs-target="#game">
-                            <img src="../img/game.jpg" class="d-block mx-auto rounded-4" alt="게임">
-                            <span class="d-flex justify-content-center mt-2">게임</span>
-                        </td>
-                        <td data-bs-toggle="modal" data-bs-target="#cooking">
-                            <img src="../img/cooking.jpg" class="d-block mx-auto rounded-4"alt="요리">
-                            <span class="d-flex justify-content-center mt-2">요리</span>
-                        </td>
-                        <td data-bs-toggle="modal" data-bs-target="#sport">
-                            <img src="../img/sport.jpg" class="d-block mx-auto rounded-4" alt="스포츠">
-                            <span class="d-flex justify-content-center mt-2">스포츠</span>
-                        </td>
-                    </tr>
-                </table>
-                <table class="table table-borderless mt-2" id="animal">
-                    <h2 class="mt-5"><i class="fa-solid fa-paw me-2"></i>동물</h2><hr>
-                    <tr class="animal">
-                        <td style="width: 25vw; height: 25vw;">
-                            <div id="cat" class="carousel slide" data-interval="false">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="../img/cat.jpg" alt="cat" class="d-block w-100 rounded-4">
+                <div class="section-top" id="area">
+                    <table class="table table-borderless mt-2">
+                        <h2><i class="fa-solid fa-earth-americas me-2"></i>지역</h2><hr>
+                        <tr class="area">
+                            <td>
+                                <span class="d-flex justify-content-center mb-2">태어난 곳</span>
+                                <a href="https://url.kr/P6PacP" target="_blank">
+                                    <img src="../img/cheonan_logo.svg" class="d-block mx-auto" alt="천안시">
+                                    <span class="d-flex justify-content-center mt-2">충청남도 천안시</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="d-flex justify-content-center mb-2">살던 곳</span>
+                                <a href="https://url.kr/GoYTrE" target="_blank">
+                                    <img src="../img/asan_logo.svg" class="d-block mx-auto" alt="아산시">
+                                    <span class="d-flex justify-content-center mt-2">충청남도 아산시</span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="d-flex justify-content-center mb-2">현재 사는 곳</span>
+                                <a href="https://url.kr/a9ixSY" target="_blank">
+                                    <img src="../img/suwon_logo.svg" class="d-block mx-auto" alt="수원시">
+                                    <span class="d-flex justify-content-center mt-2">경기도 수원시</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section" id="place">
+                    <table class="table table-borderless mt-2">
+                        <h2 class="mt-5"><i class="fa-solid fa-map-location-dot me-2"></i>장소</h2><hr>
+                        <tr class="place">
+                            <td data-bs-toggle="modal" data-bs-target="#anmeondo">
+                                <img src="../img/anmeondo_forest.jpg" class="d-block mx-auto rounded-4" alt="안면도 자연휴양림">
+                                <span class="d-flex justify-content-center my-2">안면도 자연휴양림</span>
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#kumamoto">
+                                <img src="../img/kumamoto.jpg" class="d-block mx-auto rounded-4" alt="일본 구마모토">
+                                <span class="d-flex justify-content-center my-2">일본 구마모토</span>
+                            </td>
+                        </tr>
+                        <tr class="place">
+                            <td data-bs-toggle="modal" data-bs-target="#japan">
+                                <img src="../img/japan.jpg" class="d-block mx-auto rounded-4" alt="일본">
+                                <span class="d-flex justify-content-center mt-2">일본 여행</span>
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#jeju">
+                                <img src="../img/jeju.jpg" class="d-block mx-auto rounded-4" alt="제주도">
+                                <span class="d-flex justify-content-center mt-2">제주도 여행</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section" id="food">
+                    <table class="table table-borderless mt-2">
+                        <h2 class="mt-5"><i class="fa-solid fa-utensils me-2"></i>음식</h2><hr>
+                        <tr class="food">
+                            <td>
+                                <img src="../img/meat.jpg" class="d-block mx-auto rounded-4" alt="육류">
+                                <span class="d-flex justify-content-center mt-2">육류</span>
+                            </td>
+                            <td>
+                                <img src="../img/seafood.jpg" class="d-block mx-auto rounded-4" alt="해산물">
+                                <span class="d-flex justify-content-center mt-2">해산물</span>
+                            </td>
+                            <td>
+                                <img src="../img/albab.jpg" class="d-block mx-auto rounded-4" alt="알밥">
+                                <span class="d-flex justify-content-center mt-2">알밥</span>
+                            </td>
+                            <td>
+                                <img src="../img/soba.jpg" class="d-block mx-auto rounded-4" alt="메밀소바">
+                                <span class="d-flex justify-content-center mt-2">메밀소바</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section" id="hobby">
+                    <table class="table table-borderless mt-2">
+                        <h2 class="mt-5"><i class="fa-solid fa-palette me-2"></i>취미</h2><hr>
+                        <tr class="hobby">
+                            <td data-bs-toggle="modal" data-bs-target="#game">
+                                <img src="../img/game.jpg" class="d-block mx-auto rounded-4" alt="게임">
+                                <span class="d-flex justify-content-center mt-2">게임</span>
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#cooking">
+                                <img src="../img/cooking.jpg" class="d-block mx-auto rounded-4"alt="요리">
+                                <span class="d-flex justify-content-center mt-2">요리</span>
+                            </td>
+                            <td data-bs-toggle="modal" data-bs-target="#sport">
+                                <img src="../img/sport.jpg" class="d-block mx-auto rounded-4" alt="스포츠">
+                                <span class="d-flex justify-content-center mt-2">스포츠</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section" id="animal">
+                    <table class="table table-borderless mt-2">
+                        <h2 class="mt-5"><i class="fa-solid fa-paw me-2"></i>동물</h2><hr>
+                        <tr class="animal">
+                            <td style="width: 25vw; height: 25vw;">
+                                <div id="cat" class="carousel slide" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="../img/cat.jpg" alt="cat" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/cat_0.jpg" alt="cat0" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/cat_1.jpg" alt="cat1" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/cat_2.jpg" alt="cat2" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/cat_3.jpg" alt="cat3" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/cat_4.jpg" alt="cat4" class="d-block w-100 rounded-4">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/cat_0.jpg" alt="cat0" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/cat_1.jpg" alt="cat1" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/cat_2.jpg" alt="cat2" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/cat_3.jpg" alt="cat3" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/cat_4.jpg" alt="cat4" class="d-block w-100 rounded-4">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#cat" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#cat" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#cat" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#cat" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </button>
-                            </div>
-                            <span class="d-flex justify-content-center mt-2">고양이</span>
-                        </td>
-                        <td style="width: 25vw; height: 25vw;">
-                            <div id="racoon" class="carousel slide" data-interval="false">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="../img/racoon.jpg" alt="racoon" class="d-block w-100 rounded-4">
+                                <span class="d-flex justify-content-center mt-2">고양이</span>
+                            </td>
+                            <td style="width: 25vw; height: 25vw;">
+                                <div id="racoon" class="carousel slide" data-interval="false">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="../img/racoon.jpg" alt="racoon" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/racoon_0.jpg" alt="racoon0" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/racoon_1.jpg" alt="racoon1" class="d-block w-100 rounded-4">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../img/racoon_2.jpg" alt="racoon2" class="d-block w-100 rounded-4">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/racoon_0.jpg" alt="racoon0" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/racoon_1.jpg" alt="racoon1" class="d-block w-100 rounded-4">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="../img/racoon_2.jpg" alt="racoon2" class="d-block w-100 rounded-4">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#racoon" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#racoon" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#racoon" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#racoon" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </button>
-                            </div>
-                            <span class="d-flex justify-content-center mt-2">너구리</span>
-                        </td>
-                    </tr>
-                </table>
-                <table class="table table-borderless mt-2 mb-5" id="color">
-                    <h2 class="mt-5"><i class="fa-solid fa-fill-drip me-2"></i>색상</h2><hr>
-                    <tr class="color">
-                        <td>
-                            <img src="../img/black.png" class="d-block mx-auto rounded-4" alt="검정색">
-                            <span class="d-flex justify-content-center mt-2">검정색</span>
-                        </td>
-                        <td>
-                            <img src="../img/white.png" class="d-block mx-auto rounded-4" alt="하얀색">
-                            <span class="d-flex justify-content-center mt-2">하얀색</span>
-                        </td>
-                        <td>
-                            <img src="../img/yellow.png" class="d-block mx-auto rounded-4" alt="노란색">
-                            <span class="d-flex justify-content-center mt-2">노란색</span>
-                        </td>
-                        <td>
-                            <img src="../img/skyblue.png" class="d-block mx-auto rounded-4" alt="하늘색">
-                            <span class="d-flex justify-content-center mt-2">하늘색</span>
-                        </td>
-                    </tr>
-                </table>
+                                <span class="d-flex justify-content-center mt-2">너구리</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="section" id="color">
+                    <table class="table table-borderless mt-2 mb-5">
+                        <h2 class="mt-5"><i class="fa-solid fa-fill-drip me-2"></i>색상</h2><hr>
+                        <tr class="color">
+                            <td>
+                                <img src="../img/black.png" class="d-block mx-auto rounded-4" alt="검정색">
+                                <span class="d-flex justify-content-center mt-2">검정색</span>
+                            </td>
+                            <td>
+                                <img src="../img/white.png" class="d-block mx-auto rounded-4" alt="하얀색">
+                                <span class="d-flex justify-content-center mt-2">하얀색</span>
+                            </td>
+                            <td>
+                                <img src="../img/yellow.png" class="d-block mx-auto rounded-4" alt="노란색">
+                                <span class="d-flex justify-content-center mt-2">노란색</span>
+                            </td>
+                            <td>
+                                <img src="../img/skyblue.png" class="d-block mx-auto rounded-4" alt="하늘색">
+                                <span class="d-flex justify-content-center mt-2">하늘색</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

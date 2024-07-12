@@ -19,6 +19,15 @@ span {
     color: darkgray;
 }
 
+.section-top {
+    margin-top: -70px;
+    padding-top: 70px;
+}
+.section {
+    margin-top: -20px;
+    padding-top: 20px;
+}
+
 .area td img {
     width: 15vw;
     height: 15vw;
