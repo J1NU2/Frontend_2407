@@ -42,7 +42,7 @@ switch (grade != 'F') {
     case num >= 7:
         sign = '+';
         break;
-    case 7 > num >= 3:
+    case num >= 3:
         sign = '0';
         break;
     default:
