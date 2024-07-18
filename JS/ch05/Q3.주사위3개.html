@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주사위 3개</title>
+    <style>
+        input, button { padding: 5px; }
+    </style>
+    <script>
+        function isDice() {
+            let dice1 = Math.ceil(Math.random() * 6);
+            let dice2 = Math.ceil(Math.random() * 6);
+            let dice3 = Math.ceil(Math.random() * 6);
+            let prize = 0;
+            if (dice1 == dice2 && dice2 == dice3) {
+                prize = 10000 + dice1 * 1000;
+            } else if (dice1 == dice2 || dice1 == dice3) {
+                prize = 1000 + dice1 * 100;
+            } else if (dice2 == dice3) {
+                prize = 1000 + dice2 * 100;
+            } else {
+                let maxDice = Math.max(dice1, dice2, dice3);
+                prize = maxDice * 100;
+            }
+            return { dice1, dice2, dice3, prize };
+        }
+        function checkDice() {
+            const diceGame = isDice();
+            document.getElementById('dice').innerHTML = '<strong>' + '주사위 값 : ' + diceGame.dice1 + ', ' + diceGame.dice2 + ', ' + diceGame.dice3 + '</strong>';
+            document.getElementById('prize').innerHTML = '<strong>' + '상금 : ' + diceGame.prize + '원' + '</strong>';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>주사위 3개로 상금 계산하기</h3>
+    <hr>
+    <button onclick="checkDice()">운에 맡기세요!</button>
+    <hr>
+    <div id="dice"></div>
+    <div id="prize"></div>
+</body>
+</html>
