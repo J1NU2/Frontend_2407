@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윤년 확인</title>
+    <style>
+        input, button { padding: 5px; }
+    </style>
+    <script>
+        function isLeapYear(year) {
+            return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+            /*
+            if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                return true;
+            }
+            return false;
+            */
+        }
+        function checkLeapYear() {
+            let year = Number(document.getElementById('year').value);
+            let result = isLeapYear(year) ? '윤년입니다.' : '평년입니다.';
+            document.getElementById('result').innerHTML = '<strong>' + result + '</strong>';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>윤년 확인</h3>
+    <hr>
+    <input type="text" id="year" placeholder="년도를 입력하시오.">
+    <button onclick="checkLeapYear()">확인</button>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>
