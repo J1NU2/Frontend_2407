@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사분면</title>
+    <style>
+        input, button { padding: 5px; }
+    </style>
+    <script>
+        function isQuadrant(x, y) {
+            if (x > 0 && y > 0) {
+                return quadrant = '1사분면';
+            } else if (x < 0 && y > 0) {
+                return quadrant = '2사분면';
+            } else if (x < 0 && y < 0) {
+                return quadrant = '3사분면';
+            } else if (x > 0 && y < 0) {
+                return quadrant = '4사분면';
+            } else {
+                return quadrant = '좌표가 x/y축 위에 있습니다.';
+            }
+        }
+        function checkQuadrant() {
+            let x = Number(document.getElementById('x').value);
+            let y = Number(document.getElementById('y').value);
+            const quadrant = isQuadrant(x, y);
+            document.getElementById('result').innerHTML = '<strong>' + '좌표의 위치 : ' + quadrant + '</strong>';
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h3>사분면 구하기</h3>
+    <hr>
+    <input type="text" id="x" placeholder="x축을 입력하시오.">
+    <input type="text" id="y" placeholder="y축을 입력하시오.">
+    <button onclick="checkQuadrant()">사분면 확인하기</button>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>
