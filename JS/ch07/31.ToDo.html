@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <style>
+        input, button, div { margin: 5px; padding: 5px;}
+    </style>
+    <script>
+        window.onload = () => {
+            const input = document.getElementById('todo');
+            const addButton = document.getElementById('add-button');
+            const todoList = document.getElementById('todo-list');
+
+            let keyCount = 0;
+
+            // 일정 등록하기
+            const addTodo = () => {
+                if (input.value.trim() === '') {        // trim() : 공백 제거
+                    // alert('할 일을 입력하시오.');
+                    return;
+                }
+                const item = document.createElement('div');
+                const checkbox = document.createElement('input');
+                const text = document.createElement('span');
+                const button = document.createElement('button');
+                const key = keyCount++;
+
+                // item 객체 조작 후 todo-list에 추가
+                item.setAttribute('data-key', key);     // <div>에 data-key="숫자" 생성
+                item.appendChild(checkbox);
+                item.appendChild(text);
+                item.appendChild(button);
+                todoList.appendChild(item);
+
+                // checkbox 객체 조작
+                checkbox.type = 'checkbox';             // input 타입을 checkbox로 변경
+                checkbox.addEventListener('change', (event) => {
+                    // checkbox를 체크(checked)하면 중앙 취소선(line-through), 아니면 없음
+                    item.style.textDecoration = event.target.checked ? 'line-through' : '';
+                });
+
+                // text 객체 조작
+                text.innerHTML = input.value;
+
+                // button 객체 조작
+                button.innerText = '삭제';
+                button.addEventListener('click', () => {
+                    removeTodo(key);
+                });
+
+                // input 입력 양식 등록 후 내용 비우기
+                input.value = '';
+            }
+
+            // 일정삭제하기
+            const removeTodo = (key) => {
+                const item = document.querySelector(`[data-key="${key}"]`);
+                todoList.removeChild(item);
+            }
+
+            addButton.addEventListener('click', addTodo);
+            input.addEventListener('keyup', (event) => {
+                // if (event.keyCode == 13) {
+                if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                    console.log(input.value);
+                    addTodo();
+                }
+            });
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h2>할 일 목록 만들기</h2>
+    <input id="todo">
+    <button id="add-button">등록</button>
+    <div id="todo-list"></div>
+</body>
+</html>
