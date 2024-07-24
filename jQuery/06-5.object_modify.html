@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>태그 생성 후 스타일 조작</title>
+    <script>
+        $(document).ready(() => {
+            /*
+            $('.fontColor').css('color', 'blue');
+            $('.bgColor').css('backgroundColor', 'beige');
+            $('.img').css('display', 'block').css('marginTop', '10px');
+
+            $('#addNode1').click(() => {
+                const h3 = $('#point').html('<h3></h3>');
+                $(h3).addClass('fontColor', 'bgColor');
+                $(h3).html('너구리');
+                $('#point').prepend(h3);
+            });
+
+            $('#addNode2').click(() => {
+                const h3 = $('#point').html('<h3></h3>');
+                $(h3).addClass('fontColor').addClass('bgColor');
+                $(h3).html('라쿤');
+                $('#point').append(h3);
+            });
+
+            $('#removeNode').click(() => {
+                const h3 = $('.fontColor .bgColor');
+                $('#point').remove(h3);
+            });
+            */
+        });
+    </script>
+</head>
+<body>
+    <h3>당신의 이름은 무엇인가?</h3>
+    <button id="addNode1">앞에 추가</button>
+    <button id="addNode2">뒤에 추가</button>
+    <button id="removeNode">삭제</button>
+    <button id="addPicture">사진 추가</button>
+    <button id="removePicture">사진 삭제</button>
+    <hr>
+    <div id="point">
+        To name.
+    </div>
+</body>
+</html>

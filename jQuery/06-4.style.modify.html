@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>태그 생성 후 스타일 조작</title>
+    <script>
+        $(document).ready(() => {
+            for (let i = 0; i < 256; i++) {
+                $('body').append('<div></div>');
+            }
+
+            let divs = $('div');
+            for (let i = 0; i < 256; i++) {
+                let div = divs.get(i);
+                $(div).css('height', '3px');
+                $(div).css('backgroundColor', `rgb(${255-i}, ${255-i}, ${255-i})`);
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
