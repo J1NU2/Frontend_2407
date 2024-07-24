@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>반복문</title>
+    <script>
+        $(document).ready(() => {
+            let lis = $('li');
+            for (let i = 0; i < lis.length; i++) {
+                if (i % 2 == 1) {                   // 2번째, 4번째, 6번째
+                    let li = lis.get(i);            // let li = lis[i];
+                    $(li).css('backgroundColor', 'yellow');
+                }
+            }
+
+            // jQuery 반복문 : .each(function(index, element))
+            $('li').each((index, element) => {
+                if (index % 2 == 0) {
+                    $(element).css('color', 'red');
+                } else {
+                    $(element).css('fontWeight', 'bold');
+                }
+            });
+            // 화살표 함수에서는 this를 사용 할 수 없다.
+            $('span').each(function(index, _) {
+                if (index % 2 == 0) {
+                    $(this).css('fontSize', '1.5rem');
+                } else {
+                    $(this).css('fontWeight', 'bold');
+                }
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <ul id="fruits"><span>과일 종류</span>
+        <li class="national">사과</li>
+        <li class="foreign">바나나</li>
+        <li class="national">감</li>
+        <li class="foreign">파인애플</li>
+    </ul>
+    <ul id="foods"><span>음식 종류</span>
+        <li class="national">삼겹살</li>
+        <li class="foreign">파스타</li>
+        <li class="national">김치찌개</li>
+    </ul>
+</body>
+</html>
