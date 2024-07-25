@@ -7,37 +7,39 @@
     <title>태그 생성 후 스타일 조작</title>
     <script>
         $(document).ready(() => {
-            /*
-            $('.fontColor').css('color', 'blue');
-            $('.bgColor').css('backgroundColor', 'beige');
-            $('.img').css('display', 'block').css('marginTop', '10px');
-
-            $('#addNode1').click(() => {
-                const h3 = $('#point').html('<h3></h3>');
-                $(h3).addClass('fontColor', 'bgColor');
-                $(h3).html('너구리');
+            $('#prevNode').click(() => {
+                const h3 = $('<h3></h3>').addClass('color').html('너구리');
                 $('#point').prepend(h3);
             });
 
-            $('#addNode2').click(() => {
-                const h3 = $('#point').html('<h3></h3>');
-                $(h3).addClass('fontColor').addClass('bgColor');
-                $(h3).html('라쿤');
+            $('#nextNode').click(() => {
+                const h3 = $('<h3></h3>').addClass('color').html('라쿤');
                 $('#point').append(h3);
             });
-
+            
             $('#removeNode').click(() => {
-                const h3 = $('.fontColor .bgColor');
-                $('#point').remove(h3);
+                // $('.fontColor.bgColor').remove();
+                $('#point h3:first').remove();
             });
-            */
+
+            $('#addPicture').click(() => {
+                const img = $('<img>').addClass('img').attr("src", 'https://picsum.photos/200/200');
+                $('#point').append(img);
+            });
+
+            $('#removePicture').click(() => {
+                $('#point img:first').remove();
+            });
+            
+            $('.color').css('color', 'blue').css('backgroundColor', 'beige');
+            $('.img').css('display', 'block').css('marginTop', '10px');
         });
     </script>
 </head>
 <body>
     <h3>당신의 이름은 무엇인가?</h3>
-    <button id="addNode1">앞에 추가</button>
-    <button id="addNode2">뒤에 추가</button>
+    <button id="prevNode">앞에 추가</button>
+    <button id="nextNode">뒤에 추가</button>
     <button id="removeNode">삭제</button>
     <button id="addPicture">사진 추가</button>
     <button id="removePicture">사진 삭제</button>
