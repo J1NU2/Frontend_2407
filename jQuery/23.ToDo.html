@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>할 일 목록</title>
+    <style>
+        input, button, div { margin: 5px; padding: 5px;}
+    </style>
+    <script>
+        $(document).ready(() => {
+            const input = $('#todo');
+            const todoList = $('#todoList');
+            let keyCount = 0;
+
+            const addTodo = () => {
+                if ($.trim(input.val()) === '') {
+                    return;
+                }
+
+                const item = $('<div></div>');
+                const checkbox = $('<input>');
+                const text = $('<span></span>');
+                const button = $('<button></button>');
+                const key = keyCount++;
+
+                item.attr('data-key', key);
+                item.append(checkbox);
+                item.append(text);
+                item.append(button);
+                todoList.append(item);
+
+                // attr() : HTML의 속성
+                // prop() : Javascript의 프로파티
+                checkbox.prop('type', 'checkbox')           // 또는 위쪽 const checkbox = $('<input type='checkbox'>');
+                checkbox.on('change', (event) => {
+                    item.css('textDecoration', event.target.checked ? 'line-through' : '');
+                });
+
+                text.text(input.val());
+
+                button.text('삭제');
+                button.on('click', () => {
+                    removeTodo(key)
+                });
+
+                input.val('');
+            }
+
+            const removeTodo = (key) => {
+                // find() : 특정 요소를 찾을 때 사용
+                const item = todoList.find(`[data-key="${key}"]`);
+                item.remove();
+            }
+
+            $('#addBtn').click(() => {
+                addTodo();
+            });
+
+            $('#todo').on('keyup', (event) => {
+                if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                    addTodo();
+                }
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h2>할 일 목록 만들기</h2>
+    <input id="todo">
+    <button id="addBtn">등록</button>
+    <div id="todoList"></div>
+</body>
+</html>
