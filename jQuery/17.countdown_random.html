@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>랜덤 숫자 카운트다운 : 발표 순서 정하기</title>
+    <style>
+        input, button { margin: 5px; padding: 5px; }
+    </style>
+    <script>
+        var count = 3;
+        function disp(num) {
+            $('<img>').attr({
+                src: `../JS/ch07/img/${num}.svg`,
+                width: 500,
+                id: 'number'
+            }).css('margin', '30px').appendTo('#result');
+        }
+        function hide() {
+            $('#number').remove();
+        }
+        function getRandomNumbers(num) {
+            let numbers = Array.from({length: num}, (_, index) => index + 1);
+            for (let i = numbers.length - 1; i > 0; i--) {
+                const n = Math.floor(Math.random() * (i + 1));
+                [numbers[i], numbers[n]] = [numbers[n], numbers[i]];
+            }
+            return numbers;
+        }
+        function randomOrder() {
+            let team = parseInt($('input').val());
+            let result = getRandomNumbers(team);
+            disp(count--);
+            let si = setInterval(() => {
+                hide();
+                if (count != 0) {
+                    disp(count--);
+                } else {
+                    $('<h3></h3>').text(`발표 순서 : ${result}`).appendTo('#result');
+                }
+            }, 1000);
+            setTimeout(() => {
+                clearInterval(si)
+            }, 3001);
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>발표 순서 정하기</h1>
+    <input type="text" placeholder="발표할 팀의 수는?">
+    <button onclick="randomOrder()">순서 정하기</button>
+    <hr>
+    <div id="result"></div>
+</body>
+</html>

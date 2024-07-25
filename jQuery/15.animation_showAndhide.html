@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>애니메이션 효과 : 보여주기/감추기</title>
+    <script>
+        $(document).ready(() => {
+            $('#show').click(() => {
+                $('div').show();
+            });
+            $('#hide').click(() => {
+                $('div').hide();
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <div>
+        <p>버튼을 누르면 이벤트를 처리합니다.</p>
+        <img src="https://picsum.photos/200/200" alt="랜덤 이미지"><br><br>
+    </div>
+    <button id="show">보여주기</button>
+    <button id="hide">감추기</button>
+</body>
+</html>
