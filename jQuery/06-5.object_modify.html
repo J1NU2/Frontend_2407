@@ -7,6 +7,9 @@
     <title>태그 생성 후 스타일 조작</title>
     <script>
         $(document).ready(() => {
+            $('.color').css({color: 'blue', backgroundColor: 'beige'});
+            $('.img').css({display: 'block', marginTop: '10px'});
+
             $('#prevNode').click(() => {
                 const h3 = $('<h3></h3>').addClass('color').html('너구리');
                 $('#point').prepend(h3);
@@ -18,7 +21,7 @@
             });
             
             $('#removeNode').click(() => {
-                // $('.fontColor.bgColor').remove();
+                // $('.color').remove();
                 $('#point h3:first').remove();
             });
 
@@ -30,9 +33,6 @@
             $('#removePicture').click(() => {
                 $('#point img:first').remove();
             });
-            
-            $('.color').css('color', 'blue').css('backgroundColor', 'beige');
-            $('.img').css('display', 'block').css('marginTop', '10px');
         });
     </script>
 </head>
