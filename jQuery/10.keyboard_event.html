@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>키보드 이벤트</title>
+    <style>
+        input, div { margin: 5px; padding: 5px; }
+    </style>
+    <script>
+        $(document).ready(() => {
+            $('input').on('keyup', function(event) {        // 글자 입력 시
+                $('#keyup').text($(this).val());            // <input> 태그에 입력된 값 val()
+                // $('#keyup').text(event.keyCode);            // 현재 입력한 keyCode값
+            }).on('change', function(event) {               // 글자 입력 후 엔터키를 누를 시
+                $('#change').text($(this).val());
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    입력 : <input type="text">
+    <hr>
+    <div>입력한 글자 : <span id="keyup"></span></div>
+    <div>입력된 글자 : <span id="change"></span></div>
+</body>
+</html>

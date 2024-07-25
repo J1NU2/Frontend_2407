@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>이벤트</title>
+    <script>
+        $(document).ready(() => {
+            // on() = addEventListener()
+            // 키보드 이벤트는 function() 안에 매개변수를 붙여야함 = 예시) function(event)
+            // 아래의 마우스, 클릭 이벤트는 생략해도 상관 없음
+            // this 사용 시, 화살표 함수를 사용해선 안된다.
+
+            // 모든 <h1> 태그에 대해
+            $('h1').on('mouseover', function() {
+                $(this).css('backgroundColor', 'gray');
+            }).on('mouseout', function() {
+                $(this).css('backgroundColor', 'white');
+            });
+
+            // 특정 <h1> 태그에 대해
+            $('body > h1:nth-child(3)').on('mouseover', function() {
+                $(this).css('backgroundColor', 'black').css('color', 'white');
+            }).on('mouseout', function() {
+                $(this).css('backgroundColor', 'white').css('color', 'black');
+            }).on('click', function() {
+                alert('내가 바로 헤더3')
+            });
+
+            $('h1').click(function() {
+                alert($(this).text());
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>Header 1</h1>
+    <h1>Header 2</h1>
+    <h1>Header 3</h1>
+</body>
+</html>
