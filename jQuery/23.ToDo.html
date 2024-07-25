@@ -25,10 +25,7 @@
                 const button = $('<button></button>');
                 const key = keyCount++;
 
-                item.attr('data-key', key);
-                item.append(checkbox);
-                item.append(text);
-                item.append(button);
+                item.attr('data-key', key).append(checkbox, text, button);
                 todoList.append(item);
 
                 // attr() : HTML의 속성
