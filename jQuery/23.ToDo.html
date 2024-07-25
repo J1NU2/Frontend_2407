@@ -47,8 +47,7 @@
 
             const removeTodo = (key) => {
                 // find() : 특정 요소를 찾을 때 사용
-                const item = todoList.find(`[data-key="${key}"]`);
-                item.remove();
+                todoList.find(`[data-key="${key}"]`).remove()
             }
 
             $('#addBtn').click(() => {
