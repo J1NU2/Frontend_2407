@@ -29,6 +29,7 @@
             return numbers;
         }
         function randomOrder() {
+            $('#result > h3:nth-child(1)').remove();
             let team = parseInt($('input').val());
             let result = getRandomNumbers(team);
             disp(count--);
@@ -38,6 +39,7 @@
                     disp(count--);
                 } else {
                     $('<h3></h3>').text(`발표 순서 : ${result}`).appendTo('#result');
+                    count = 3;
                 }
             }, 1000);
             setTimeout(() => {
