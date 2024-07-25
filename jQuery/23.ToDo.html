@@ -28,8 +28,8 @@
                 item.attr('data-key', key).append(checkbox, text, button);
                 todoList.append(item);
 
-                // attr() : HTML의 속성
-                // prop() : Javascript의 프로파티
+                // attr() : HTML의 속성(attribute)
+                // prop() : Javascript의 속성(property)
                 checkbox.prop('type', 'checkbox')           // 또는 위쪽 const checkbox = $('<input type='checkbox'>');
                 checkbox.on('change', (event) => {
                     item.css('textDecoration', event.target.checked ? 'line-through' : '');
