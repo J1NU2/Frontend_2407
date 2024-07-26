@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Infinite Scroll</title>
+    <script>
+        $(document).ready(() => {
+            let textCount = 1;
+            const appendDocument = () => {
+                for (let i = 0; i < 20; i++) {
+                    $('<h1></h1>').text(`${textCount++}번째 무한 스크롤`).appendTo('body');
+                }
+            }
+            appendDocument();
+
+            $(window).scroll(() => {
+                let scrollHeight = $(window).scrollTop() + $(window).height();
+                let documentHeight = $(document).height();
+                if (scrollHeight == documentHeight) {
+                    appendDocument();
+                }
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    
+</body>
+</html>
