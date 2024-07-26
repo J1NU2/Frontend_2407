@@ -15,7 +15,7 @@
         $(document).ready(() => {
             let frames = [];
             for (let i = 0; i <= 100; i++) {
-                frames.push(`img/cat(${i + 1}).jpg`);
+                frames.push(`img/cat(${i}).jpg`);
             }
 
             $('#image').css({
@@ -35,8 +35,12 @@
                 } else {
                     clearInterval(si);
                     si = null;
-                    // $('#imgDownload').attr('src', `C:/Workspace/FrontEnd/jQuery/${frames[(count - 1)% frames.length]}`);
                 }
+            });
+
+            $('#imgDownload').click(() => {
+                const imgURL = $('#image').attr('src');
+                $('#imgDownload').attr('href', imgURL);
             });
         });
     </script>
@@ -46,6 +50,6 @@
         <img id="image" src="img/cat(0).jpg">
     </div>
     <button id="startNstop">시작 / 멈추기</button>
-    <!-- <a id="imgDownload"><button>이미지 다운로드</button></a> -->
+    <a id="imgDownload" download><button>이미지 다운로드</button></a>
 </body>
 </html>
