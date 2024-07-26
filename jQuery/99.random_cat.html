@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>I'm Cat</title>
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
+        body { text-align: center; }
+        button { margin: 30px; padding: 5px; }
+    </style>
+    <script>
+        $(document).ready(() => {
+            let frames = [];
+            for (let i = 0; i <= 100; i++) {
+                frames.push(`img/cat(${i + 1}).jpg`);
+            }
+
+            $('#image').css({
+                width : 640,
+                height : 420,
+                border: '1px solid black',
+                borderRadius: '15px'
+            });
+
+            let count = 0;
+            let si = null;
+            $('#startNstop').click(() => {
+                if (si === null) {
+                    si = setInterval(() => {
+                        $('#image').attr('src', frames[count++ % frames.length]);
+                    }, 1000/800);            // 500 frame per second(FPS)
+                } else {
+                    clearInterval(si);
+                    si = null;
+                    // $('#imgDownload').attr('src', `C:/Workspace/FrontEnd/jQuery/${frames[(count - 1)% frames.length]}`);
+                }
+            });
+        });
+    </script>
+</head>
+<body style="margin: 40px;">
+    <div>
+        <img id="image" src="img/cat(0).jpg">
+    </div>
+    <button id="startNstop">시작 / 멈추기</button>
+    <!-- <a id="imgDownload"><button>이미지 다운로드</button></a> -->
+</body>
+</html>
