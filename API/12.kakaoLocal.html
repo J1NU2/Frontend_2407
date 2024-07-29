@@ -13,19 +13,19 @@
             --data-urlencode "query=경기도 수원시 영통구 도청로 30 (이의동)"
             */
 
-            let base_url = 'https://dapi.kakao.com/v2/local/search/address.json';
+            let baseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
             let address = '경기도 수원시 영통구 도청로 30 (이의동)';
-            let url = `${base_url}?query=${encodeURIComponent(address)}`;
+            let url = `${baseUrl}?query=${encodeURIComponent(address)}`;
 
             // 헤더 : Authorization: KakaoAK ${REST_API_KEY}
             let header = { Authorization: `KakaoAK ${kakaoRestKey}` };
 
             fetch(url, { headers: header }).then(response => response.json()).then(result => {
                 console.log(result);
-                let x = result.documents[0].road_address.x;
-                let y = result.documents[0].road_address.y;
-                document.getElementById('lat').innerHTML = y;
-                document.getElementById('lon').innerHTML = x;
+                let lat = result.documents[0].y;
+                let lon = result.documents[0].x;
+                document.getElementById('lat').innerHTML = lat;
+                document.getElementById('lon').innerHTML = lon;
             }).catch(error => {
                 console.log(error);
             });
