@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행안부 도로명주소 API</title>
+    <script src="key.js"></script>
+    <script>
+        window.onload = () => {
+            let base_url = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+            let params1 = 'currentPage=1&countPerPage=5';
+            let params2 = `keyword=${encodeURIComponent('경기도청')}`;          // 한글은 반드시 인코딩을 해야한다
+            let params3 = `confmKey=${roadAddressKey}&resultType=json`;
+            let url =  `${base_url}?${params1}&${params2}&${params3}`;
+
+            // 화살표 함수 사용 : 축약
+            fetch(url).then(response => response.json()).then(result => {
+                console.log(result);
+                let roadAddr = result.results.juso[0].roadAddr;
+                document.getElementById('place').innerHTML = roadAddr;
+            });
+            
+            /*
+            fetch(url).then(function(response) {
+                return response.json();
+            }).then(function(result) { 내용 });
+            */
+
+            // document.querySelector('p').innerHTML = url;
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>행안부 도로명주소 API</h1>
+    <hr>
+    <h3>경기도청 - <span id="place"></span></h3>
+    <!-- <p></p> -->
+</body>
+</html>

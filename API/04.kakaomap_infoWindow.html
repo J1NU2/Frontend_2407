@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaKao Map Information Window</title>
+    <!-- <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=이곳에 JavaScript Key 입력"></script> -->
+    <script src="key.js"></script>
+    <script>
+        window.onload = () => {
+            const kakaoScript = document.createElement('script');
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJSKey}&autoload=false`;
+            kakaoScript.onload = () => {
+                kakao.maps.load(() => {
+                    initializeMap();
+                });
+            }
+            document.head.appendChild(kakaoScript);
+        }
+        function initializeMap() {
+            let container = document.getElementById('map');     // 지도를 담을 영역의 DOM 레퍼런스
+            let position = new kakao.maps.LatLng(33.450701, 126.570667) // 지도의 중심좌표
+            let options = {         // 지도를 생성할 때 필요한 기본 옵션
+                center: position,
+                level: 3            // 지도의 레벨(확대, 축소 정도)
+            };
+            let map = new kakao.maps.Map(container, options);   // 지도 생성 및 객체 리턴
+
+            // 마커 생성
+            let marker = new kakao.maps.Marker({
+                map: map,           // 마커가 지도 위에 표시되도록 설정
+                position: position
+            });
+
+            // 인포윈도우 생성
+            let infowindow = new kakao.maps.InfoWindow({
+                content : '<div style="padding:5px;">인포윈도우입니다.</div>'
+            });
+
+            // 마우스 오버/아웃 이벤트 설정
+            kakao.maps.event.addListener(marker, 'mouseover', () => {
+                // 마커에 마우스 오버 발생 시 인포윈도우 표시
+                infowindow.open(map, marker);
+            });
+            kakao.maps.event.addListener(marker, 'mouseout', () => {
+                // 마커에 마우스 아웃 발생 시 인포윈도우 제거
+                infowindow.close();
+            });
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <div id="map" style="width:600px; height:400px;"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaKao Local API</title>
+    <script src="key.js"></script>
+    <script>
+        window.onload = () => {
+            /*
+            curl -v -G GET "https://dapi.kakao.com/v2/local/search/address.json" \
+            -H "Authorization: KakaoAK ${REST_API_KEY}" \
+            --data-urlencode "query=경기도 수원시 영통구 도청로 30 (이의동)"
+            */
+
+            let base_url = 'https://dapi.kakao.com/v2/local/search/address.json';
+            let address = '경기도 수원시 영통구 도청로 30 (이의동)';
+            let url = `${base_url}?query=${encodeURIComponent(address)}`;
+
+            // 헤더 : Authorization: KakaoAK ${REST_API_KEY}
+            let header = { Authorization: `KakaoAK ${kakaoRestKey}` };
+
+            fetch(url, { headers: header }).then(response => response.json()).then(result => {
+                console.log(result);
+                let x = result.documents[0].road_address.x;
+                let y = result.documents[0].road_address.y;
+                document.getElementById('lat').innerHTML = y;
+                document.getElementById('lon').innerHTML = x;
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>KaKao Local API</h1>
+    <hr>
+    <h3>경기도청</h3>
+    <ul>
+        <li>도로명주소 : 경기도 수원시 영통구 도청로 30 (이의동)</li>
+        <li>위도 : <span id="lat"></span></li>
+        <li>경도 : <span id="lon"></span></li>
+    </ul>
+</body>
+</html>
