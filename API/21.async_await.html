@@ -12,6 +12,7 @@
             kakaoScript.onload = () => {
                 kakao.maps.load(async () => {       // 익명의 비동기 함수
                     const {place, roadAddr, lat, lon} = await getCoordinate('경기도청');
+                    document
                     document.getElementById('roadAddr').innerHTML = roadAddr;
                     document.getElementById('lat').innerHTML = String(lat.toFixed(6));
                     document.getElementById('lon').innerHTML = String(lon.toFixed(6));
