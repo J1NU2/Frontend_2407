@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ed44b2bb56.js" crossorigin="anonymous"></script>
-    <script src="C:/Workspace/FrontEnd/API/key.js"></script>
+    <script src="C:/Workspace/Frontend_2407/API/key.js"></script>
     <script>
         let places = ['천안시청', '아산시청', '수원시청'];
         const roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
@@ -25,10 +25,10 @@
             
             change.addEventListener('click', () => {
                 if (inputbox.style.display === 'none' || inputbox.style.display === '') {
-                    change.innerText = '닫기'
+                    change.innerText = '닫기';
                     inputbox.style.display = 'flex';
                 } else {
-                    change.innerText = '수정'
+                    change.innerText = '수정';
                     inputbox.style.display = 'none';
                 }
             });
@@ -110,12 +110,14 @@
         }
 
         function introRegister() {
+            const change = document.getElementById('change');
             let intro = document.getElementById('intro');
             let comment = document.getElementById('comment').value;
 
             if (comment == '') {
                 alert('내용을 입력해주세요.')
             } else {
+                change.innerText = '수정'
                 intro.innerText = comment;
                 document.getElementById('comment').value = '';
                 inputbox.style.display = 'none';
