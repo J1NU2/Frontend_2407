@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우편 번호</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="key.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
+        input, button { margin: 5px; padding: 5px; }
+        </style>
+</head>
+<body style="margin: 40px;">
+    <h1>맵 연습 : 주소 선택 시 지도도 보여주기</h1>
+    <hr>
+    <input type="text" id="address" placeholder="주소">
+    <button onclick="addressSearch()">주소 검색</button>
+    <br>
+    <div id="map" style="width:300px; height:300px; margin-top:10px; display:none"></div>
+    
+    <script>
+        window.onload = () => {
+            const kakaoScript = document.createElement('script');
+            kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJSKey}&autoload=false`;
+            kakaoScript.onload = () => {
+                kakao.maps.load(() => { });
+            };
+            document.head.appendChild(kakaoScript);
+        }
+
+        let mapContainer = document.getElementById('map'),              // 지도를 표시할 <div>
+            mapOption = {
+                center: new daum.maps.LatLng(37.537187, 127.005476),    // 지도의 중심 좌표
+                level: 5                                                // 지도의 확대 레벨
+            };
+
+        let map = new daum.maps.Map(mapContainer, mapOption);   // 지도를 미리 생성
+        let geocoder = new daum.maps.services.Geocoder();       // 주소-좌표 변환 객체를 생성
+        let marker = new daum.maps.Marker({                     // 마커를 미리 생성
+            position: new daum.maps.LatLng(37.537187, 127.005476),
+            map: map
+        });
+        
+        function addressSearch() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    let addr = data.address;    // 최종 주소 변수
+
+                    // 주소 정보를 해당 필드에 추가
+                    document.getElementById('address').value = addr;
+                    // 주소로 상세 정보를 검색
+                    geocoder.addressSearch(data.address, function(results, status) {
+                        // 검색이 정상적으로 됐다면 실행
+                        if (status === daum.maps.services.Status.OK) {
+                            let result = results[0]     // 첫번째 결과의 값 활용
+                            // 해당 주소의 좌표를 받아서 지도를 보여줌
+                            let coords = new daum.maps.LatLng(result.y, result.x);
+                            mapContainer.style.display = 'block';
+                            map.relayout();
+                            map.setCenter(coords);      // 지도 중심 변경
+                            marker.setPosition(coords); // 마커를 결과값으로 받은 위치로 이동
+                        }
+                    });
+                }
+            }).open();
+        }
+    </script>
+</body>
+</html>

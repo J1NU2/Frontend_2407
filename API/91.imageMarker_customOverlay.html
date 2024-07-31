@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 마커와 커스텀 오버레이</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="key.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
+        input, button { margin: 5px; padding: 5px; }
+        .custom-overlay {
+            padding: 5px 13px;
+            background: none;
+            background-color: white;
+            color : black;
+            font-weight: 600;
+            border: solid 2px #E74C3C;
+            border-radius: 25px;
+        }
+    </style>
+    <script>
+        const roadBaseUrl = 'https://business.juso.go.kr/addrlink/addrLinkApi.do';
+        const kakaoBaseUrl = 'https://dapi.kakao.com/v2/local/search/address.json';
+        const params1 = 'currentPage=1&countPerPage=5';
+        const params3 = `confmKey=${roadAddressKey}&resultType=json`;
+        const header = { Authorization: `KakaoAK ${kakaoRestKey}` };
+
+        const kakaoScript = document.createElement('script');
+        kakaoScript.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoJSKey}&autoload=false`;
+        kakaoScript.onload = () => {
+            kakao.maps.load(async () => { });
+        };
+        document.head.appendChild(kakaoScript);
+        
+        async function handleMaps() {
+            let place = $('#input').val();
+            let coords = [];
+            let sumLat = 0.0, sumLon = 0.0;
+            const coord = await getCoordinate(place);
+            coords.push(coord);
+            sumLat += coord.lat; sumLon += coord.lon;
+            let text = `${place} : ${coord.roadAddr}, 위도 : ${coord.lat.toFixed(6)}, 경도 : ${coord.lon.toFixed(6)}`;
+            $('<h3></h3>').html(text).appendTo($('#h3'));
+            drawMaps(coords, sumLat/coords.length, sumLon/coords.length);
+        }
+
+        async function getCoordinate(place) {
+            try {
+                const params2 = `keyword=${encodeURIComponent(place)}`;
+                const roadUrl = `${roadBaseUrl}?${params1}&${params2}&${params3}`;
+
+                let response = await fetch(roadUrl);            // 비동기 함수 사용 시 fetch() 앞에 무조건 await 사용
+                let result = await response.json();
+                let roadAddr = result.results.juso[0].roadAddr;
+
+                let kakaoUrl = `${kakaoBaseUrl}?query=${encodeURIComponent(roadAddr)}`;
+                response = await fetch(kakaoUrl, { headers: header });
+                result = await response.json();
+                let lat = parseFloat(result.documents[0].y);
+                let lon = parseFloat(result.documents[0].x);
+                return {place, roadAddr, lat, lon};
+            } catch(error) {
+                console.log(error);
+                return {place, roadAddr:null, lat:null, lon:null};
+            }
+        }
+
+        function drawMaps(coords, centerLat, centerLon) {
+            let container = document.getElementById('map');
+            let center = new kakao.maps.LatLng(centerLat, centerLon);
+            let map = new kakao.maps.Map(container, { center: center, level: 5 });
+
+            let imageSrc = 'https://cdn.icon-icons.com/icons2/317/PNG/512/map-marker-icon_34392.png',
+                imageSize = new kakao.maps.Size(47, 49);
+                // imageOption = { offset: new kakao.maps.Point(26, 69) };
+            
+            let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+                // markerPosition = new kakao.maps.LatLng(centerLat, centerLat)
+
+            for (let coord of coords) {
+                let marker = new kakao.maps.Marker({
+                    map: map,
+                    position: new kakao.maps.LatLng(coord.lat, coord.lon),
+                    image: markerImage
+                });
+                let customOverlay = new kakao.maps.CustomOverlay({
+                    map: map,
+                    position: new kakao.maps.LatLng(coord.lat, coord.lon),
+                    content: `<div class="custom-overlay">${coord.place}<br>${coord.roadAddr}</div>`,
+                    yAnchor: 1.7
+                });
+                customOverlay.setMap(null);
+                kakao.maps.event.addListener(marker, 'mouseover', () => {
+                    customOverlay.setMap(map, marker);
+                });
+                kakao.maps.event.addListener(marker, 'mouseout', () => {
+                    customOverlay.setMap(null);
+                });            
+            }
+        }
+    </script>
+</head>
+<body style="margin: 40px;">
+    <h1>맵 연습 : 이미지 마커와 커스텀 오버레이</h1>
+    <hr>
+    <input type="text" id="input" placeholder="장소를 입력해주세요.">
+    <button onclick="handleMaps()">생성</button>
+    <hr>
+    <h3 id="h3"></h3>
+    <div id="map" style="width:800px; height:600px; margin-top: 20px;"></div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우편 번호</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <style>
+        * { font-family: 'Noto Sans KR', sans-serif; }
+        input, button { margin: 5px; padding: 5px; }
+        #layer {
+            display: none;
+            position: fixed;
+            overflow: hidden;
+            z-index: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+        #btnCloseLayer {
+            cursor: pointer;
+            position: absolute;
+            right: -3px;
+            top: -3px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body style="margin: 40px;">
+    <h1>맵 연습 : iframe으로 레이어 띄우기</h1>
+    <hr>
+    <input type="text" id="postCode" placeholder="우편번호">
+    <button onclick="postCodeSearch()">우편번호 찾기</button>
+    <br>
+    <input type="text" id="address" placeholder="주소">
+    <br>
+    <input type="text" id="detailAddress" placeholder="상세주소">
+    <input type="text" id="extraAddress" placeholder="참고항목">
+
+    <div id="layer">
+        <img src="http://t1.daumcdn.net/postcode/resource/images/close.png" 
+            id="btnCloseLayer" onclick="closePostCodeSearch()" alt="닫기 버튼">
+    </div>
+
+    <script>
+        // 우편번호 찾기 화면을 넣을 element
+        let element_layer = document.getElementById('layer');
+
+        function closePostCodeSearch() {
+            // iframe을 넣은 element를 안보이도록 설정
+            element_layer.style.display = 'none';
+        }
+
+        function postCodeSearch() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업창에서 검색결과 항목을 클릭했을 때 실행할 코드를 작성
+
+                    let addr = '';              // 주소 변수
+                    let extraAddr = '';         // 참고 항목 변수, 변수가 없을 경우 공백('')처리
+
+                    // 사용자가 선택한 주소 타입에 따른 주소 값
+                    if (data.userSelectedType === 'R') {
+                        addr = data.roadAddress;        // 도로명 주소를 선택한 경우
+                    } else {
+                        addr = data.jibunAddress;       // 지번 주소를 선택한 경우(J)
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일 때의 참고항목
+                    if (data.userSelectedType === 'R') {
+                        // 법정동명이 있을 경우 (법정리 제외)
+                        // 법정동의 경우 마지막 문자가 동/로/가로 끝남
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraRoadAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            // 삼항연산자, extraRoadAddr가 공백('')일경우 ', '와 건물명을 붙이고 아니면 건물명만 표시
+                            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열로 생성
+                        if (extraRoadAddr !== '') {
+                            extraRoadAddr = ' (' + extraRoadAddr + ')';
+                        }
+                        // 조합된 참고항목을 필드에 추가
+                        document.getElementById('extraAddress').value = extraAddr;
+                    } else {
+                        document.getElementById('extraAddress').value = '';
+                    }
+
+                    // 우편번호와 주소 정보를 필드에 추가
+                    document.getElementById('postCode').value = data.zonecode;
+                    document.getElementById('address').value = addr;
+                    document.getElementById('detailAddress').focus();           // 커서를 상세주소 필드로 이동
+
+                    // iframe을 넣은 element를 안보이도록 설정
+                    // autoClose:false 사용 시에는 아래 코드를 제거할 것
+                    element_layer.style.display = 'none';
+
+                    /*
+                    console.log(data.zonecode);
+                    console.log(roadAddr);
+                    console.log(data.jibunAddress);
+                    console.log(extraAddr);
+                    console.log(guideTextBox);
+                    */
+                },
+                width : '100%',
+                height : '100%',
+                maxSuggestItems : 5
+            }).embed(element_layer);
+            // iframe을 넣은 element를 보이도록 설정
+            element_layer.style.display = 'block';
+            // iframe을 넣은 element의 위치를 화면 가운데로 이동
+            initLayerPosition();
+        }
+
+        // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고 싶을 때
+        // 1. resize 이벤트나, orientationchange 이벤트를 이용하여 값이 변경될 때마다 아래 함수를 실행
+        // 2. 직접 element_layer의 top, left 값을 수정
+        function initLayerPosition() {
+            let width = 300;            // 우편번호 서비스가 들어갈 element의 width
+            let height = 400;           // 우편번호 서비스가 들어갈 element의 height
+            let borderWidth = 5;        // iframe 창의 border 두께
+
+            // 위에서 선언한 값들을 실제 element에 추가
+            element_layer.style.width = width + 'px';
+            element_layer.style.height = height + 'px';
+            element_layer.style.border = borderWidth + 'px solid';
+
+            // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산
+            element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
+            element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+        }
+    </script>
+</body>
+</html>
